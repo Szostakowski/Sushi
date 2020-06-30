@@ -14,8 +14,8 @@ public class LogInPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//span[contains(.,‘Konto‘)]")
-    private WebElement account;
+    @FindBy(css = "div.user-account > a")
+    private WebElement goToLog;
 
     @FindBy(id = "_start-login")
     private WebElement logIn;
@@ -23,25 +23,39 @@ public class LogInPage {
     @FindBy(name = "username")
     private WebElement userName;
 
+    @FindBy(name = "password")
+    private WebElement password;
+
+    @FindBy(id = "_login")
+    private WebElement log;
+
 
 
     public void goToLogIn(){
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        account.click();
+        driver.switchTo().frame("upmenu-iframe");
+        goToLog.click();
     }
 
-    public void logIn(){
+    public void clickLogin(){
         logIn.click();
     }
 
+
     public void userData(){
         userName.clear();
-        userName.sendKeys("rafal.szostakowski@gmail.com");
+        userName.sendKeys("rafal.szostakowski+sushi@gmail.com");
     }
+
+    public void password(){
+        password.clear();
+
+    }
+
+    public void logClick(){
+        log.click();
+    }
+
+
 
 
 }

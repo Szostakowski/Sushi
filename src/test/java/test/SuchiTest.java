@@ -1,8 +1,10 @@
 package test;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.LogInPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,8 +22,23 @@ public class SuchiTest {
         driver = new ChromeDriver();
 
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.get(web);
+    }
+
+    @Test
+    public void suchiOrder(){
+
+        LogInPage logIn = new LogInPage(this.driver);
+
+
+        logIn.goToLogIn();
+        logIn.clickLogin();
+        logIn.userData();
+        logIn.password();
+        logIn.logClick();
+
+
     }
 
 
